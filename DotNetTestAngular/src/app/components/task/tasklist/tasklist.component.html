@@ -1,0 +1,50 @@
+<div style="height: 75vh;margin-top: 50px;">
+
+    <h1 class="text-center">Tasks</h1>
+
+    <table class="container table table-borderd">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Project</th>
+                <th>Priority</th>
+                <th>Status</th>
+                <th>DueDate</th>
+                <th>AssignTo</th>
+                <th>CreatedAt</th>
+                <th>CreatedBy</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngIf="!tasks">
+                <td class="text-center" colspan="2">No task found !</td>
+            </tr>
+            <tr *ngFor="let task of tasks">
+                <td>{{task.title}}</td>
+                <td>{{task.description}}</td>
+                <td>{{task.project.projectName}}</td>
+                <td>{{task.priority}}</td>
+                <td>{{task.status}}</td>
+                <td>{{task.dueDate | date}}</td>
+                <td>{{task.assignedUser.username}}</td>
+                <td>{{task.createdAt | date}}</td>
+                <td>{{task.createdByUser.username}}</td>
+
+                <td>
+                    <button class="btn btn-outline-primary rounded-pill btn-sm"
+                        (click)="updateTask(task.taskId)">Edit</button> |
+                    <button class="btn btn-outline-danger rounded-pill btn-sm"
+                        (click)="confirmDelete(task.taskId)">Delete</button>
+
+
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <div class="d-flex align-item-center justify-content-center mb-5">
+        <a class="btn btn-secondary" [routerLink]="['/addtask']" routerLinkActive="router-link-active"> Add Task</a>
+    </div>
+</div>

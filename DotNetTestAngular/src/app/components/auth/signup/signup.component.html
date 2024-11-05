@@ -1,0 +1,106 @@
+<div class="container">
+    <div class="row justify-content-center mt-1">
+        <div class="col-lg-8">
+            <div class="card custom-card">
+                <h5 class="card-header text-center"><b>Sign Up</b></h5>
+                <!-- <div *ngIf="loading" class="text-center p-3">
+                    <img src="assets/loadergif.gif" alt="loading" />
+                </div> -->
+
+                <div class="card-body">
+                    <form #signUpForm="ngForm" class="needs-validation" (ngSubmit)="onSubmit(signUpForm)" novalidate>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="username"><b>User Name:</b></label>
+                            <input type="text" class="form-control" id="username" name="username"
+                                [(ngModel)]="user.username" placeholder="Enter your username">
+                            <!-- <div *ngIf="signUpForm.controls['name']?.invalid && signUpForm.controls['name']?.touched"
+                                        class="text-danger">
+                                        <small *ngIf="signUpForm.controls['name']?.errors?.['required']">Name is
+                                            required.</small>
+                                        <small *ngIf="signUpForm.controls['name']?.errors?.['minlength']">Name must be
+                                            at least 2 characters long.</small>
+                                    </div> -->
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label class="form-label" for="email"><b>Email:</b></label>
+                            <input type="email" class="form-control" id="email" name="email" [(ngModel)]="user.email"
+                                required email placeholder="Enter your email">
+                            <!-- <div *ngIf="signUpForm.controls['email']?.invalid && signUpForm.controls['email']?.touched"
+                                    class="text-danger">
+                                    <small *ngIf="signUpForm.controls['email']?.errors?.['required']">Email is
+                                        required.</small>
+                                    <small *ngIf="signUpForm.controls['email']?.errors?.['email']">Invalid email
+                                        format.</small>
+                                </div> -->
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="password"><b>Password:</b></label>
+                            <input type="password" class="form-control" id="password" name="password"
+                                [(ngModel)]="user.password" required minlength="8"
+                                pattern="^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&].{8,}$"
+                                placeholder="Enter your password">
+                            <!-- <div *ngIf="signUpForm.controls['password']?.invalid && signUpForm.controls['password']?.touched"
+                                class="text-danger">
+                                <small *ngIf="signUpForm.controls['password']?.errors?.['required']">Password is
+                                    required.</small>
+                                <small *ngIf="signUpForm.controls['password']?.errors?.['minlength']">Password must
+                                    be
+                                    at least 8 characters long.</small>
+                                <small *ngIf="signUpForm.controls['password']?.errors?.['pattern']">Password must be
+                                    alphanumeric and contain at least one special character.</small>
+                            </div> -->
+
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="confirmPassword"><b>Confirm Password:</b></label>
+                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
+                                [(ngModel)]="user.confirmPassword" (input)="checkPasswords(signUpForm)" required
+                                placeholder="Enter confirm password">
+                            <!-- <div *ngIf="signUpForm.controls['confirmPassword']?.invalid && signUpForm.controls['confirmPassword']?.touched"
+                                class="text-danger">
+                                <small *ngIf="signUpForm.controls['confirmPassword']?.errors?.['required']">Confirm
+                                    password is required.</small>
+                                <small
+                                    *ngIf="signUpForm.controls['confirmPassword']?.errors?.['passwordMismatch']">Passwords
+                                    do not match.</small>
+                            </div> -->
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label class="form-label" for="userRoleId"><b>User Type</b></label>
+                            <select id="userRoleId" name="userRoleId" class="form-control" [(ngModel)]="user.userRoleId" required>
+                                <option value=0>----- Select user type -----</option>
+                                <option value=1>Admin</option>
+                                <option value=2>Manager</option>
+                                <option value=3>Employee</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <div class="btn-group">
+                                <button type="submit" class="btn btn-primary"
+                                    [disabled]="signUpForm.invalid">Submit</button> &nbsp;
+                                <button type="submit" class="btn btn-outline-danger" [routerLink]="['/home']"
+                                    routerLinkActive="router-link-active">Cancel</button>
+                            </div>
+                        </div>
+                        <br>
+
+                        <p style="margin-left: 190px;">Already have an account? <a [routerLink]="['/signin']"
+                                routerLinkActive="router-link-active" class="custom-link">Sign In</a></p>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

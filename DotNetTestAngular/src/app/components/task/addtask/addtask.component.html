@@ -1,0 +1,91 @@
+<div class="container">
+    <div class="row justify-content-center mt-1">
+        <div class="col-lg-8">
+            <div class="card custom-card">
+                <h5 class="card-header text-center"><b>Add Task</b></h5>
+
+                <div class="card-body">
+                    <form #addTaskForm="ngForm" class="needs-validation" (ngSubmit)="onSubmit(addTaskForm)" novalidate>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="projectId"><b>Project</b></label>
+                            <select id="projectId" name="projectId" class="form-control" [(ngModel)]="tasks.projectId"
+                                required>
+                                <option value=0>----- Select your project -----</option>
+                                <option *ngFor="let project of projects" [ngValue]="project.projectId">
+                                    {{project.projectName}}</option>
+                            </select>
+
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="title"><b>Title</b></label>
+                            <input type="text" class="form-control" id="title" name="title" [(ngModel)]="tasks.title"
+                                placeholder="Enter your title">
+
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="description"><b>Description</b></label>
+                            <input type="text" class="form-control" id="description" name="description"
+                                [(ngModel)]="tasks.description" placeholder="Enter your description">
+
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="priority"><b>Priority</b></label>
+                            <select id="priority" name="priority" class="form-control" [(ngModel)]="tasks.priority"
+                                required>
+                                <option value="Low">Low</option>
+                                <option value="Medium">Medium</option>
+                                <option value="High">High</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="status"><b>Status</b></label>
+                            <select id="status" name="status" class="form-control" [(ngModel)]="tasks.status" required>
+                                <option value="To Do">To Do</option>
+                                <option value="In Progress">In Progress</option>
+                                <option value="Completed">Completed</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="dueDate"><b>Due Date</b></label>
+                            <input type="date" class="form-control" id="dueDate" name="dueDate"
+                                [(ngModel)]="tasks.dueDate">
+                        </div>
+                      
+                        <div class="mb-3">
+                            <label class="form-label" for="assignedTo"><b>Assign To</b></label>
+                            <select id="assignedTo" name="assignedTo" class="form-control" [(ngModel)]="tasks.assignedTo"
+                                required>
+                                <option value=0>----- Select your user -----</option>
+                                <option *ngFor="let user of users" [ngValue]="user.userId">
+                                    {{user.username}}</option>
+                            </select>
+
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <div class="btn-group">
+                                <button type="submit" class="btn btn-primary"
+                                    [disabled]="addTaskForm.invalid">Submit</button> &nbsp;
+                                <button type="submit" class="btn btn-outline-danger" [routerLink]="['/home']"
+                                    routerLinkActive="router-link-active">Cancel</button>
+                            </div>
+                        </div>
+                        <br>
+
+
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
